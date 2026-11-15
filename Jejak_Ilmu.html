@@ -142,7 +142,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 @keyframes loaderOut{to{opacity:0;visibility:hidden}}
 
 /* ---------- header ---------- */
-.top{position:sticky;top:0;z-index:50;background:var(--navy);background-image:var(--paper);color:var(--on-band);border-bottom:2px solid var(--gold);transition:box-shadow .3s}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);background-image:var(--paper);color:var(--on-band);border-bottom:2px solid var(--gold);transition:box-shadow .3s}
 :root[data-theme="dark"] .top{background-color:#091121}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .top{background-color:#091121}}
 .top::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:rgba(196,154,69,.55);pointer-events:none}
@@ -206,7 +206,7 @@ section.page.enter{animation:pageIn .6s var(--ease)}
 @media (max-width:1320px){.docstack{display:none}}
 
 /* reveal on scroll */
-html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+html.js .rv{transform:translateY(14px);transition:transform .8s var(--ease);transition-delay:var(--d,0ms)}
 html.js .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
 
@@ -1235,7 +1235,7 @@ const restart=(n,c)=>{ if(!n) return; n.classList.remove(c); void n.offsetWidth;
 const loader=$("#loader");
 function hideLoader(){ if(loader) loader.classList.add("done"); }
 window.addEventListener("load",()=>setTimeout(hideLoader,200));
-setTimeout(hideLoader,1400);
+setTimeout(hideLoader,700);
 
 /* ---------- theme ---------- */
 const themeBtn=$("#themeBtn");
