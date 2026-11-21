@@ -867,6 +867,7 @@ html.js .streams.rv.in .st,html.js .streams.rv.in .st-main{stroke-dashoffset:0}
 .video-card{display:grid;grid-template-columns:1.3fr 1fr;gap:0;background:var(--navy);background-image:var(--paper);color:var(--on-band);border:1px solid var(--gold);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
 .video-frame{position:relative;aspect-ratio:16/9;background:#0A1222;max-width:100%}
 .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-frame::before{content:"Memuatkan video YouTube…";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-band-soft)}
 .video-frame .vlink{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;color:var(--ivory);text-decoration:none;text-align:center;padding:16px}
 .video-frame .vlink i{width:72px;height:72px;border-radius:50%;background:var(--gold-grad);display:grid;place-items:center;color:var(--navy);font-style:normal;font-size:1.6rem;box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
 .video-copy{padding:clamp(20px,3vw,32px);display:grid;gap:12px;align-content:center}
@@ -1256,14 +1257,15 @@ html.fs-s{font-size:92%} html.big2{font-size:130%}
     <div class="stack" style="gap:16px" id="videoSec" hidden>
       <header class="sec-head rv">
         <p class="eyebrow">Video penerangan</p>
-        <h3>Tonton penerangan Jejak Ilmu</h3>
+        <h3>Sejarah ringkas sekolah vernakular</h3>
       </header>
       <div class="video-card">
         <div class="video-frame" id="videoFrame"></div>
         <div class="video-copy">
           <p class="eyebrow on-dark">Video</p>
-          <h3>Rancangan pengajaran dan sejarah pendidikan negara</h3>
-          <p>Video ini menerangkan reka bentuk pengajaran, strategi dan aktiviti, serta kandungan sejarah yang dijejaki dalam laman ini.</p>
+          <h3>Sekolah Melayu, Cina dan Tamil zaman British</h3>
+          <p>Tonton video ringkas ini sebelum menjelajah Tiga Wilayah. Perhatikan bagaimana setiap aliran sekolah vernakular mempunyai bahasa pengantar dan kurikulumnya sendiri.</p>
+          <p class="hint" style="color:var(--on-band-soft)">Video dibenamkan daripada YouTube; hak cipta kekal milik pemilik saluran.</p>
           <a class="btn gold sm" id="videoOut" href="#" target="_blank" rel="noopener" style="justify-self:start">Buka di YouTube ↗</a>
         </div>
       </div>
@@ -1819,6 +1821,7 @@ html.fs-s{font-size:92%} html.big2{font-size:130%}
             <li>Aminuddin Baki: Yayasan Dakwah Islamiah Malaysia. <a href="https://www.yadim.com.my/v2/aminuddin-baki/" target="_blank" rel="noopener">https://www.yadim.com.my/v2/aminuddin-baki/</a></li>
           </ul>
         </li>
+        <li>Video "Sejarah ringkas sekolah vernakular" dibenamkan terus daripada YouTube dan tidak dimuat turun atau dimuat naik semula: <a href="https://youtu.be/9wJk5BHHGQQ" target="_blank" rel="noopener">https://youtu.be/9wJk5BHHGQQ</a></li>
         <li>Audio ringkas menggunakan suara sintesis pelayar web anda.</li>
         <li>Kuiz dan dinding refleksi tidak mengumpul nama, alamat e-mel atau maklumat peribadi.</li>
       </ul>
@@ -2466,7 +2469,7 @@ RQ.forEach((r,i)=>{ const d=document.createElement("div"); d.className="panel fr
   $("#renung").appendChild(d); });
 
 /* ---------- video ---------- */
-const VIDEO="";
+const VIDEO="https://youtu.be/9wJk5BHHGQQ";
 (function(){ const m=VIDEO.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); if(!m) return; const id=m[1]; $("#videoSec").hidden=false; $("#videoOut").href="https://www.youtube.com/watch?v="+id;
   const fr=$("#videoFrame"); const isArtifact=/claude\.ai|claudeusercontent/.test(location.hostname);
   if(isArtifact){ fr.innerHTML='<a class="vlink" target="_blank" rel="noopener"><i aria-hidden="true">▶</i><span>Tonton video di YouTube</span></a>'; fr.firstChild.href="https://www.youtube.com/watch?v="+id; }
