@@ -733,7 +733,7 @@ footer h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-tra
 .foot-info b{color:var(--ivory);font-weight:600}
 .foot-bottom{border-top:1px solid rgba(196,154,69,.25);padding:18px 0 22px;font-size:.8rem;display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;font-family:var(--mono);letter-spacing:.04em}
 .totop{position:fixed;right:clamp(14px,2vw,24px);bottom:clamp(14px,2vw,24px);z-index:40;width:46px;height:46px;border-radius:50%;background:var(--gold-grad);color:var(--navy);border:1px solid #A9802F;display:grid;place-items:center;box-shadow:var(--shadow-lg);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .35s,transform .35s var(--ease)}
-.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop.vis{opacity:1;transform:none;pointer-events:auto}
 .totop svg{width:18px;height:18px}
 @media print{.top,.loader,.totop,.pager,footer{display:none!important}section.page{display:block!important}}
 
@@ -953,10 +953,11 @@ html.fs-s{font-size:92%} html.big2{font-size:130%}
 .conclusion p{font-family:var(--display);font-size:clamp(1.05rem,1.8vw,1.22rem);line-height:1.7;color:var(--title)}
 .fc-wrap{display:grid;gap:16px;justify-items:center}
 .fc{perspective:1200px;width:min(520px,100%);height:230px;border:0;background:transparent;padding:0;cursor:pointer}
-.fc-in{position:relative;width:100%;height:100%;transition:transform .7s var(--ease);transform-style:preserve-3d}
+.fc{display:block}
+.fc-in{display:block;position:relative;width:100%;height:100%;transition:transform .7s var(--ease);transform-style:preserve-3d}
 .fc.flip .fc-in{transform:rotateY(180deg)}
 .fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;display:grid;place-items:center;align-content:center;gap:8px;padding:22px;text-align:center;border:1px solid var(--gold);box-shadow:var(--shadow-lg)}
-.fc-f{background:var(--navy);background-image:var(--paper);color:var(--ivory)}
+.fc-f{background:var(--band-2);background-image:var(--paper);color:var(--ivory)}
 .fc-f b{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);color:var(--gold)}
 .fc-f small,.fc-b small{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
 .fc-b{background:var(--surface);background-image:var(--paper);color:var(--ink);transform:rotateY(180deg)}
@@ -1969,7 +1970,7 @@ $$(".rv").forEach(watch);
 
 /* ---------- scroll progress, header, back to top ---------- */
 const readBar=$("#readBar"), topEl=$(".top"), toTop=$("#toTop");
-function onScroll(){ const d=document.documentElement, y=d.scrollTop||document.body.scrollTop, max=d.scrollHeight-d.clientHeight; readBar.style.transform="scaleX("+(max>0?Math.min(1,y/max):0).toFixed(4)+")"; topEl.classList.toggle("scrolled",y>8); toTop.classList.toggle("show",y>700); }
+function onScroll(){ const d=document.documentElement, y=d.scrollTop||document.body.scrollTop, max=d.scrollHeight-d.clientHeight; readBar.style.transform="scaleX("+(max>0?Math.min(1,y/max):0).toFixed(4)+")"; topEl.classList.toggle("scrolled",y>8); toTop.classList.toggle("vis",y>700); }
 window.addEventListener("scroll",onScroll,{passive:true}); window.addEventListener("resize",onScroll);
 toTop.addEventListener("click",()=>{ window.scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"}); });
 
